@@ -28,6 +28,10 @@ window.onload = function (){
     dayFourText.textContent += dayFourDate
     var dayFiveText = document.querySelector('#dayFive')
     dayFiveText.textContent += dayFiveDate
+
+    var currentDate = moment().format('MMMM Do YYYY, h:mm a')
+    var dateHtml = document.querySelector('#time')
+    dateHtml.textContent += currentDate
 }
 
 function grabWeather (cityName) {
