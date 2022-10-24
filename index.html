@@ -1,19 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
-<title>Page Title</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="">
+<title>Weather Report App</title>
+<meta name="description" content="Weather API - Check your Weather!">
+<link rel="stylesheet" href="assets/style.css">
 <style>
 </style>
 <body>
-    <form>
+    <h1>Weather Report - Type a City to check the Weather!</h1>
+    <div class="firstBox"><form>
         <input id="searchBox" type="text" placeholder="Search.." name="search">
         <button id="searchBtn" type="button">Search</button>
     </form>
-<div id="todaysWeather">
+    </div>
+    <div id="hide" class="weatherBox">
     <!-- todaysWeather will be created by javascript -->
-</div>
+        <h2>Forecast for Today</h2>
+        <p id="img"></p>
+        <p id="temperatureInfo"></p>
+        <p id="windSpeedInfo"></p>
+        <p id="humidityInfo"></p>
+        <p id="weatherInfo"></p>
+    </div>
+    <div id="hide" class="weatherBox">
+            <h2>Forecast for Tomorrow</h2>
+            <p id="img"></p>
+            <p id="temperatureTomorrow"></p>
+            <p id="windSpeedTomorrow"></p>
+            <p id="humidityTomorrow"></p>
+            <p id="weatherTomorrow"></p>
+        </div>
+    <div id="hide" class="weatherBox">
+         <h2>Forecast for Day 3</h2>
+         <p id="img"></p>
+         <p id="temperatureDay3"></p>
+         <p id="windSpeedDay3"></p>
+          <p id="humidityDay3"></p>
+          <p id="weatherDay3"></p>
+      </div>
+      <div id="hide" class="weatherBox">
+        <h2>Forecast for Day 4</h2>
+        <p id="img"></p>
+        <p id="temperatureDay4"></p>
+        <p id="windSpeedDay4"></p>
+        <p id="humidityDay4Day4"></p>
+        <p id="weatherDay4"></p>
+    </div>
+    <div id="hide"class="weatherBox">
+        <h2>Forecast for day 5</h2>
+        <p id="img"></p>
+        <p id="temperatureDay5"></p>
+        <p id="windSpeedDay5"></p>
+        <p id="humidityDay5"></p>
+        <p id="weatherDay5"></p>
+    </div>
 
 </body>
 <script src="assets/logic.js"></script>

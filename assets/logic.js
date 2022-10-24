@@ -9,6 +9,7 @@
 // THEN I am again presented with current and future conditions for that city
 
 var apiKey = "10866f66ad6bb865c9dbba843aef9fb8";
+var weather = "";
 
 function grabWeather (cityName) {
     var url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
@@ -22,12 +23,17 @@ function grabWeather (cityName) {
         var weather = data.weather[0].main
         //call weatherIcon function
         //take weather data, put into html
-        var todaysWeather = document.querySelector("#todaysWeather")
-        todaysWeather.textContent = temperature + "\n" + windSpeed + "\n" + humidity + "\n" + weather
+        var todaysTemperature = document.querySelector("#temperatureInfo")
+        todaysTemperature.textContent = "Temperature: " + temperature
+        var todaysWind = document.querySelector("#windSpeedInfo")
+        todaysWind.textContent = "Wind Speed: " + windSpeed
+        var todaysHumidity = document.querySelector("#humidityInfo")
+        todaysHumidity.textContent = "Humidity: " + humidity
+        var todaysWeather = document.querySelector("#weatherInfo")
+        todaysWeather.textContent = "Weather: " + weather
     })
 }
 
-// grabWeather(cityName)
 
 //search button
 var searchButton = document.querySelector("#searchBtn")
@@ -35,11 +41,20 @@ searchButton.addEventListener('click', function() {
     var searchText = document.querySelector("#searchBox")
     var cityName = searchText.value
     grabWeather(cityName)
+    hideRemove()
 })
-
-
-
 
 
 //weatherIcon function 
 //if statements based on weather variable etc "clear, cloudy, rain, snow, mist"
+
+// function weatherIcon () {
+//     var image = document.querySelector(".img")
+//     if (weather == )
+// }
+
+//function to remove hide property (returning null at the moment)
+function hideRemove () {
+    let weatherBox = document.getElementById('#weatherBox');
+    weatherBox.removeAttribute("hide")
+}
