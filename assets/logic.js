@@ -11,6 +11,25 @@
 var apiKey = "10866f66ad6bb865c9dbba843aef9fb8";
 var weather = "";
 
+window.onload = function (){
+    var dayOneDate = moment().format('MMMM Do');
+    var dayTwoDate = moment().add(1, 'days').format('MMMM Do');
+    var dayThreeDate = moment().add(1, 'days').format('MMMM Do');
+    var dayFourDate = moment().add(2, 'days').format('MMMM Do');
+    var dayFiveDate = moment().add(3, 'days').format('MMMM Do');
+
+    var dayOneText = document.querySelector('#dayOne')
+    dayOneText.textContent += dayOneDate
+    var dayTwoText = document.querySelector('#dayTwo')
+    dayTwoText.textContent += dayTwoDate
+    var dayThreeText = document.querySelector('#dayThree')
+    dayThreeText.textContent += dayThreeDate
+    var dayFourText = document.querySelector('#dayFour')
+    dayFourText.textContent += dayFourDate
+    var dayFiveText = document.querySelector('#dayFive')
+    dayFiveText.textContent += dayFiveDate
+}
+
 function grabWeather (cityName) {
     var url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
     fetch(url)
@@ -34,13 +53,13 @@ function grabWeather (cityName) {
     })
 }
 
-
 //search button
 var searchButton = document.querySelector("#searchBtn")
 searchButton.addEventListener('click', function() {
     var searchText = document.querySelector("#searchBox")
     var cityName = searchText.value
     grabWeather(cityName)
+    grabForecast(cityName)
     hideRemove()
 })
 
@@ -49,12 +68,35 @@ searchButton.addEventListener('click', function() {
 //if statements based on weather variable etc "clear, cloudy, rain, snow, mist"
 
 // function weatherIcon () {
-//     var image = document.querySelector(".img")
-//     if (weather == )
+//     var weather = document.querySelectorAll("#weatherInfo")
+//     var image = document.querySelector("#img")
+//     image.classList.add('clear')
+//     if (weather.value == 'clear'){
+//         image.classList.add('clear')
+//     } else if (weather.value == 'cloudy')
+//         image.classList.add('clouds')
 // }
 
-//function to remove hide property (returning null at the moment)
+//function to remove hide property
 function hideRemove () {
-    let weatherBox = document.getElementById('#weatherBox');
-    weatherBox.removeAttribute("hide")
+    let weatherBox = document.querySelectorAll('.weatherBox');
+    for (var i = 0 ; i < weatherBox.length; i++) {
+        weatherBox[i].style.display = 'inline-block'
+    }
+}
+
+function grabForecast(cityName){
+    var urlTwo = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`;
+        fetch(urlTwo)
+        .then(response => response.json())
+        .then(data => {
+            var dataWeather = data.list
+            for (i = 0; i < dataWeather.length; i++) {
+                var dateTimestamp = dataWeather[i].dt_txt
+                var timeTimestamp = dateTimestamp.slice(11, 19)
+                if (timeTimestamp == "12:00:00") {
+                    console.log(dataWeather[i])
+            }
+        }
+    })
 }
